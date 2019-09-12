@@ -1,0 +1,26 @@
+.valid {
+  color: green;
+  font-size: 80%;
+  margin-top: 0.25rem;
+}
+
+.invalid {
+  font-size: 80%;
+  color: #dc3545;
+  margin-top: 0.25rem;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+@media only screen and (min-width: 600px) {
+  body,
+  html,
+  .App,
+  .root,
+  .container,
+  .row {
+    min-height: 100vh;
+  }
+}
