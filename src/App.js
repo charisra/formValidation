@@ -34,18 +34,11 @@ function App() {
     isValid: notesIsValid
   } = useInput(validator);
 
-  let [showForm, setShowForm] = useState(true);
-  let [showErrors, setShowErrors] = useState(false);
-
-  // Function to handle the form submission. Validaition is done here
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (notesIsValid && nameIsValid && emailIsValid) {
-      setShowForm(false);
-    } else {
-      setShowErrors(true);
-    }
-  };
+  const {
+    onSubmit: handleSubmit,
+    showForm: showForm,
+    showErrors: showErrors
+  } = useInput(validator);
 
   return (
     <div className="App">
@@ -90,9 +83,13 @@ function App() {
                     isValid={notesIsValid}
                     showErrors={showErrors}
                   />
-                  {/* /Helper div to render the validation + character count or just the character count*/}
                 </FormGroup>
-                <Button color="primary" onClick={e => handleSubmit(e)}>
+                <Button
+                  color="primary"
+                  onClick={e =>
+                    handleSubmit(e, notesIsValid, nameIsValid, emailIsValid)
+                  }
+                >
                   Submit
                 </Button>
               </Form>
